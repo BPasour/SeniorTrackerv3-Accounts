@@ -1,0 +1,101 @@
+﻿@page
+@using SeniorTrackerv3_Accounts.Models;
+@model SeniorTrackerv3_Accounts.Pages.Students.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Student.ID" />
+            <div class="form-group">
+                <label asp-for="Student.Name" class="control-label"></label>
+                <input asp-for="Student.Name" class="form-control" />
+                <span asp-validation-for="Student.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Email" class="control-label"></label>
+                <input asp-for="Student.Email" class="form-control" />
+                <span asp-validation-for="Student.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.GAdvisor" class="control-label"></label>
+                <select asp-for="Student.GAdvisor"
+                        asp-items="Html.GetEnumSelectList<Faculty>()"
+                        class="form-control">
+                </select>
+                <span asp-validation-for="Student.GAdvisor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Topic" class="control-label"></label>
+                <input asp-for="Student.Topic" class="form-control" />
+                <span asp-validation-for="Student.Topic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Credit" class="control-label"></label>
+                <select asp-for="Student.Credit"
+                        asp-items="Html.GetEnumSelectList<CreditType>()"
+                        class="form-control">
+                </select>
+                <span asp-validation-for="Student.Credit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Advisor" class="control-label"></label>
+                <select asp-for="Student.Advisor"
+                        asp-items="Html.GetEnumSelectList<Faculty>()"
+                        class="form-control">
+                </select>
+                <span asp-validation-for="Student.Advisor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Board1" class="control-label"></label>
+                <select asp-for="Student.Board1"
+                        asp-items="Html.GetEnumSelectList<Faculty>()"
+                        class="form-control">
+                </select>
+                <span asp-validation-for="Student.Board1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Board2" class="control-label"></label>
+                <select asp-for="Student.Board2"
+                        asp-items="Html.GetEnumSelectList<Faculty>()"
+                        class="form-control">
+                </select>
+                <span asp-validation-for="Student.Board2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.Board3" class="control-label"></label>
+                <input asp-for="Student.Board3" class="form-control" />
+                <span asp-validation-for="Student.Board3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.CoverLetter" class="control-label"></label>
+                <input asp-for="Student.CoverLetter" class="form-control" />
+                <span asp-validation-for="Student.CoverLetter" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Student.Honors" /> @Html.DisplayNameFor(model => model.Student.Honors)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
