@@ -24,3 +24,13 @@ body {
 .navbar-brand{
     padding:1rem 0 1rem 0;
 }
+
+.table {
+    --bs-table-striped-bg: #edf9fd;
+    --bs-table-hover-bg: #fde6e2;
+}
+
+.ralign {
+    text-align: right;
+    margin-right: 1rem;
+}

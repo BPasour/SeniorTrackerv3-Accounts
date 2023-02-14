@@ -32,6 +32,7 @@ namespace SeniorTrackerv3_Accounts.Models
 
         // Count through Exhibitions pointing to this Teacher as Advisor
         [Display(Name = "Advising Count")]
+        [DisplayFormat()]
         public int AdvCount { get; set; }
 
         // Clickable link to exhibition pages

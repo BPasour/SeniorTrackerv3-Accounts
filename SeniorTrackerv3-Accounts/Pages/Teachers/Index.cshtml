@@ -10,7 +10,7 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-hover table-striped">
     <thead>
         <tr>
             <th>
@@ -44,23 +44,62 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AdvCount)
+                <p class="ralign"> @Html.DisplayFor(modelItem => item.AdvCount) </p>
             </td>
             <td>
                 <table>
                     @foreach (var adv in item.Advisees) 
                     {
+                        int id = 0;
                         <tr>
-                            @adv
+                            <td>
+                                <div class="ralign">
+                                    @foreach (var student in Model.Students)
+                                        {
+                                            if (student.Name == adv)
+                                            {
+                                                id = student.ID;
+                                            }
+                                        }
+                                    <a
+                                        asp-page ="../Students/Details"
+                                        asp-route-id ="@id">
+                                        @adv
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                     }
                 </table>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BoardCount)
+                <p class="ralign"> @Html.DisplayFor(modelItem => item.BoardCount)</p>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BoardStudents)
+                <table>
+                    @foreach (var bs in item.BoardStudents)
+                    {
+                            int id = 0;    
+                            <tr>
+                                <td>
+                                    <div class="ralign">
+                                        @foreach (var student in Model.Students)
+                                        {
+                                            if (student.Name == bs)
+                                            {
+                                                id = student.ID;
+                                            }
+                                        }
+                                        <a
+                                            asp-page="../Students/Details"
+                                            asp-route-id="@id">
+                                            @bs
+                                            </a>
+                                    </div>
+                                </td>
+                            </tr>
+                    }
+                </table>
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
